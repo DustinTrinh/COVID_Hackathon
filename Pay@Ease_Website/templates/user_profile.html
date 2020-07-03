@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="{{ url_for('static', filename='./css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='./css/now-ui-dashboard.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='./css/demo.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='./css/nucleo-icons.css') }}" rel="stylesheet">
+  <title> Pay@Ease Profilee </title>
+</head>
+
+<body class="user-profile">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="orange">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini"> CT </a>
+        <a href="http://www.creative-tim.com" class="simple-text logo-normal"> Creative Tim </a>
+      </div>
+      -->
+      <div class="sidebar" data-color="orange">
+                  <div class="logo">
+        <div class="row pi-draggable" draggable="true">
+          <div style="text-align:center;" class="col-md-12">
+            <img style="width:60px; height:60px;" src="{{ url_for('static', filename='./assets/vidimg/logo.png') }}" >
+          </div>
+          <div class="col-md-12" style="text-align:center;">
+            <a href="#" class="simple-text logo-normal"> Pay@Ease </a>
+          </div>
+        </div>
+      </div>
+        <div class="sidebar-wrapper" id="sidebar-wrapper">
+           <ul class="nav">
+          <li class="">
+            <a href="{{ url_for('activeBills') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Active bills list</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('closeBills') }}">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Closed bills list</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('instantBill') }}">
+              <i class="now-ui-icons business_money-coins"></i>
+              <p style="">Create Instant Bills</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="{{ url_for('profile') }}">
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+          <li>
+            <a href="{{ url_for('logout') }}">
+              <i class="now-ui-icons media-1_button-power"></i>
+              <p>Log Out</p>
+            </a>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="main-panel ps ps--active-y ps--active-x" id="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <h1>User Profile</h1>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="panel-header panel-header-sm">
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Edit Profile</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-8 pr-1">
+                      <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" class="form-control" placeholder="Company" value="{{userInfo.company_name}}" disabled="">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Balance</label>
+                        <input type="text" class="form-control" placeholder="Company" value="{{userInfo.balance}}" disabled="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" placeholder="username" value="{{userInfo.username}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="text" class="form-control" placeholder="email" value="{{userInfo.email}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" class="form-control" placeholder="phone" value="{{userInfo.phone_number}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" placeholder="Home Address" value="{{userInfo.address}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+
+
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="number" class="form-control" placeholder="{{userInfo.postal_code}}">
+                      </div>
+                    </div>
+                  </div>
+                </form><a class="btn btn-primary" href="#">Update Information</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Password Changing</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" class="form-control" placeholder="Current Password">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" class="form-control" placeholder="New Password">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                        <label>Retype New Password</label>
+                        <input type="password" class="form-control" placeholder="New Password">
+                      </div>
+                    </div>
+                  </div>
+                </form><a class="btn btn-primary" href="#">Update Password</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ps__rail-x" style="left: 0px; bottom: -124px; width: 1163px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 1124px;"></div>
+      </div>
+      <div class="ps__rail-y" style="top: 124px; right: 0px; height: 875px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 91px; height: 645px;"></div>
+      </div>
+      <div class="ps__rail-x" style="left: 0px; bottom: -124px; width: 1163px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 1124px;"></div>
+      </div>
+      <div class="ps__rail-y" style="top: 124px; right: 0px; height: 875px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 109px; height: 766px;"></div>
+      </div>
+      <div class="ps__rail-x" style="left: 0px; bottom: -241px; width: 1163px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 1124px;"></div>
+      </div>
+      <div class="ps__rail-y" style="top: 241px; right: 0px; height: 875px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 189px; height: 685px;"></div>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='./js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/perfect-scrollbar.jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/chartjs.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/bootstrap-notify.js') }}"></script>
+  <script src="{{ url_for('static', filename='./js/now-ui-dashboard.min.js') }}"  type="text/javascript"></script>
+  <script src="{{ url_for('static', filename='./js/demo.js') }}"></script>
+</body>
+
+</html>
